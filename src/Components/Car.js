@@ -1164,7 +1164,7 @@ class Car extends React.Component {
                 </div>
                 <input type="hidden" id="zoomIn1" value="0" />
                 <input type="hidden" id="zoomIn2" value="0"></input>
-                {/* <Pannellum
+                <Pannellum
                     width="100%"
                     height="1024px"
                     image={myImage}
@@ -1259,48 +1259,8 @@ class Car extends React.Component {
                         }}
                         URL="https://github.com/farminf/pannellum-react"
                     />
-                </Pannellum> */}
-                <Pannellum
-                    width="800px"
-                    height="400px"
-                    image={myImage}
-                    pitch={10}
-                    yaw={180}
-                    hfov={500}
-                    autoLoad
-                    author=""
-                    title=""
-                    orientationOnByDefault={false}
-                    draggable
-                    keyboardZoom
-                    mouseZoom
-                    preview=""
-                    previewAuthor=""
-                    previewTitle=""
-                    showControls
-                    showFullscreenCtrl
-                    showZoomCtrl
-                    onLoad={() => { console.log("panorama loaded"); }}
-                    onScenechange={(id) => { console.log("Scene has change on " + id); }}
-                    onScenechangefadedone={() => { console.log("panorama loaded"); }}
-                    onError={(err) => { console.log("Error", err); }}
-                    onErrorcleared={() => { console.log("Error Cleared"); }}
-                    onMousedown={(evt) => { console.log("Mouse Down", evt); }}
-                    onMouseup={(evt) => { console.log("Mouse Up", evt); }}
-                    onTouchstart={(evt) => { console.log("Touch Start", evt); }}
-                    onTouchend={(evt) => { console.log("Touch End", evt); }}
-                    hotspotDebug={false}
-                >
-                    <Pannellum.Hotspot
-                        type="info"
-                        pitch={11}
-                        yaw={-167}
-                        text="Info Hotspot Text 3"
-                        URL="https://github.com/farminf"
-                    />
-
-
                 </Pannellum>
+               
                 <div style={{ position: 'absolute', zIndex: '9999' }}>
                     <Home />
                 </div>
