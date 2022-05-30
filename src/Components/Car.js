@@ -494,7 +494,7 @@ class Car extends React.Component {
     render() {
         return (
             <div>
-                {this.state.isShowWheelCad ? <div style={{ position: 'absolute', top: '100px', left: '100px', width: '800px', height: '800px', backgroundColor: 'red', zIndex: '999999' }} ><Home /></div> : null}
+                {this.state.isShowWheelCad ? <div style={{ position: 'absolute', top: '10%', left: '5%', width: '80%', height: '80%', backgroundColor: 'transparent', zIndex: '999999' }} ><Home /></div> : null}
 
                 <ul className="top-nav">
                     <li>
@@ -1260,10 +1260,6 @@ class Car extends React.Component {
                         URL="https://github.com/farminf/pannellum-react"
                     />
                 </Pannellum>
-               
-                <div style={{ position: 'absolute', zIndex: '9999' }}>
-                    <Home />
-                </div>
             </div>
         );
     }

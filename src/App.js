@@ -21,7 +21,7 @@ class App extends Component {
             <Route exact path="/">
               <Redirect to="/login" />
             </Route>
-            <Route exact path="/login" component={Home} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/car" component={Car} />
             <Route exact path="/pannel" component={PannellumReact} />
           </div>

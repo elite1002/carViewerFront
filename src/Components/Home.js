@@ -42,7 +42,7 @@ const Iframe = (props) => {
   return (
     <div style={{width: '100%', height: '100%'}}>
       {/* <div dangerouslySetInnerHTML={iframe()} /> */}
-      <div dangerouslySetInnerHTML={{ __html: "<iframe src='https://3d-car-viewer-backend.vercel.app/TAI-valve-stowed-to-open_HTML_1.html' width='100%' height='100%'/>"}} />
+      <div style={{width: '100%', height: '100%'}} dangerouslySetInnerHTML={{ __html: "<iframe src='https://3d-car-viewer-backend.vercel.app/TAI-valve-stowed-to-open_HTML_1.html' width='100%' height='100%' style='border-style: none'/>"}} />
     </div>
   );
 };
