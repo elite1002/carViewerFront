@@ -6,7 +6,6 @@ import myImage from "./images/car.jpg";
 
 
 const PannellumReact = () => {
-  console.log('asdfasdf')
   return (
   <div>
     {/* <Pannellum

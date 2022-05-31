@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { Pannellum, PannellumVideo } from "pannellum-react";
 import myImage from "./images/car.jpg";
 import Home from './Home';
+import { Modal } from 'react-bootstrap';
+
+
 class Car extends React.Component {
     constructor(props) {
         super(props);
@@ -494,8 +497,24 @@ class Car extends React.Component {
     render() {
         return (
             <div>
-                {this.state.isShowWheelCad ? <div style={{ position: 'absolute', top: '10%', left: '5%', width: '80%', height: '80%', backgroundColor: 'transparent', zIndex: '999999' }} ><Home /></div> : null}
-
+                <Modal
+                    show={this.state.isShowWheelCad}
+                    onHide={() => this.setState({isShowWheelCad: false})}
+                    // style={{position: 'absolute', top: '10%', left: '5%', width: '80%', height: '80%', backgroundColor: 'transparent', zIndex: '999999'}}
+                    dialogClassName="modal-90w"
+                    fullscreen={true}
+                    size="lg"
+                    aria-labelledby="example-custom-modal-styling-title"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="example-custom-modal-styling-title">
+                            Graphic
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div style={{ width: '100%', height: '100%', backgroundColor: 'transparent', zIndex: '999999' }} ><Home /></div>
+                    </Modal.Body>
+                </Modal>
                 <ul className="top-nav">
                     <li>
                         <a href="#">
@@ -1164,11 +1183,14 @@ class Car extends React.Component {
                 </div>
                 <input type="hidden" id="zoomIn1" value="0" />
                 <input type="hidden" id="zoomIn2" value="0"></input>
+                <div id='panorama'>
+
+                </div>
                 <Pannellum
                     width="100%"
                     height="1024px"
                     image={myImage}
-                    pitch={10}
+                    pitch={-30}
                     yaw={180}
                     hfov={110}
                     autoLoad
