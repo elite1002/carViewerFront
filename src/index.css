@@ -390,7 +390,7 @@ ul {
 .list-numbers li a {
   width: 100%;
   display: block;
-  color: #fff;
+  color: #fff !important;
   font-size: 14px;
 }
 
