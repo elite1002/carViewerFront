@@ -46,7 +46,7 @@ class Login extends React.Component {
                                         onScreen: true
                                     }
                                 });
-                            } else if (this.state.userEmail == 'test@gmail.com' && this.state.userPassword == '123456') {
+                            } else if (this.state.userEmail == 'test@gmail.com' && this.state.userPassword == '1x9d00E93I@sdf$A') {
                                 this.props.history.push('/car');
                             } else {
                                 Store.addNotification({
