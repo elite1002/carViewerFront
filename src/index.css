@@ -494,7 +494,7 @@ ul {
   position: fixed;
   z-index: 100;
   background: #232cb799;
-  width: 300px;
+  width: 360px;
   text-align: center;
   padding: 30px;
   top: 50%;
@@ -527,7 +527,7 @@ ul {
   color: #000;
   display: inline-block;
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 14px !important;
   text-transform: capitalize;
 }
 

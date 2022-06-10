@@ -13,6 +13,7 @@ class Car extends React.Component {
         super(props);
         this.state = {
             isShowWheelCad: false,
+            dropDownG: false,
         }
     }
     componentWillMount() {
@@ -714,7 +715,7 @@ class Car extends React.Component {
                         <div className="options-list">
                             <h3 className="bg-green">steering wheel</h3>
                             <ul className="list-numbers">
-                                <li><a href="#" className='active'>Inspect steering wheel for cracks in the covering and test controls.</a></li>
+                                <li><a href="#">Inspect steering wheel for cracks in the covering and test controls.</a></li>
                                 <li><a href="#">Repair Steering Wheel.</a></li>
                                 <li><a href="#">Test cruise control.</a></li>
                             </ul>
@@ -993,12 +994,16 @@ class Car extends React.Component {
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" id="dropdownG">
+                                <a href="#" id="dropdownG" onClick={() => {
+                                    console.log('asdfasdfasdf')
+                                    this.setState({
+                                        dropDownG: !this.state.dropDownG
+                                    })}}>
                                     <div className="rightbox-icon">
                                         <img src="https://www.linkpicture.com/q/resources.png" alt="" />
                                     </div>
                                 </a>
-                                <ul className="select-drop-down" id="dropG" style={{ display: 'none' }}>
+                                <ul className="select-drop-down" id="dropG" style={{ display: this.state.dropDownG ? 'block' : 'none' }}>
                                     <li className="showAll">
                                         <a href="#" id="gLinkAll">Show all</a>
                                     </li>
@@ -1136,7 +1141,7 @@ class Car extends React.Component {
                     <h1>Do you want this video to open on a small screen or a new browser tab</h1>
                     <div className="butns-links-popup">
                         <a href="#" className="close-btn"><i className="fas fa-times"></i></a>
-                        <a href="#" id="small-screenS" className="vPlay">Open Small Screen</a>
+                        <a href="#" id="small-screenS" className="vPlay" style={{marginRight: 5+'px'}}>Open Small Screen</a>
                         <a id="newTapS"
                             href="https://www.youtube.com/embed/XKfgdkcIUxw?title=0&portrait=0&byline=0&autoplay=1&loop=1&transparent=1"
                             target="_blank">Open New tab</a>
