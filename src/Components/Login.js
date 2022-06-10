@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Store, ReactNotifications } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
 import 'animate.css/animate.min.css';
+import { connect } from 'react-redux';
+
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -10,6 +12,11 @@ class Login extends React.Component {
             userPassword: ''
         }
     }
+
+    componentDidMount() {
+        this.props.onInitialize();
+    }
+
     checkuser() {
 
     }
@@ -47,6 +54,7 @@ class Login extends React.Component {
                                     }
                                 });
                             } else if (this.state.userEmail == 'test@gmail.com' && this.state.userPassword == '1x9d00E93I@sdf$A') {
+                                this.props.onSubmit(this.state.userEmail, this.state.userPassword);
                                 this.props.history.push('/car');
                             } else {
                                 Store.addNotification({
@@ -63,7 +71,9 @@ class Login extends React.Component {
                                     }
                                 });
                             }
-                        }}>Submit</button>
+                        }}>
+                        Submit
+                        </button>
                     </form>
                 </div>
                 <div className="center-form-box hide" id="sign-box">
@@ -88,5 +98,14 @@ class Login extends React.Component {
 
 }
 
-export default (Login);
+const mapStateToProps = state => (state.User);
 
+const mapDispatchToProps = dispatch => ({
+  onSubmit: (email, password) =>
+    dispatch({ type: 'LOGIN', payload: {email, password} }),
+  onInitialize: () => {
+      dispatch({ type: 'INITIALIZE'})
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

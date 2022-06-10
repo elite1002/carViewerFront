@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './index.css';
 import './App.css';
 import Home from './Components/Home';
 import Car from './Components/Car';

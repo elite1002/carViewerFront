@@ -5,6 +5,7 @@ import { Pannellum, PannellumVideo } from "pannellum-react";
 import myImage from "./images/car.jpg";
 import Home from './Home';
 import { Modal } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 
 class Car extends React.Component {
@@ -13,6 +14,11 @@ class Car extends React.Component {
         this.state = {
             isShowWheelCad: false,
         }
+    }
+    componentWillMount() {
+        console.log('this.props.isLoggedIn = ', this.props.isLoggedIn);
+        if (!this.props.isLoggedIn)
+            this.props.history.push('/login')   
     }
     componentDidMount() {
         // Update the document title using the browser API
@@ -186,6 +192,7 @@ class Car extends React.Component {
         });
 
         $('#dropdownG').click(function () {
+            console.log('aa')
             $("#dropG").toggle();
             // $("#tool-boxG").css("display", "none");
         });
@@ -499,7 +506,7 @@ class Car extends React.Component {
             <div>
                 <Modal
                     show={this.state.isShowWheelCad}
-                    onHide={() => this.setState({isShowWheelCad: false})}
+                    onHide={() => this.setState({ isShowWheelCad: false })}
                     // style={{position: 'absolute', top: '10%', left: '5%', width: '80%', height: '80%', backgroundColor: 'transparent', zIndex: '999999'}}
                     dialogClassName="modal-90w"
                     fullscreen={true}
@@ -707,7 +714,7 @@ class Car extends React.Component {
                         <div className="options-list">
                             <h3 className="bg-green">steering wheel</h3>
                             <ul className="list-numbers">
-                                <li><a href="#">Inspect steering wheel for cracks in the covering and test controls.</a></li>
+                                <li><a href="#" className='active'>Inspect steering wheel for cracks in the covering and test controls.</a></li>
                                 <li><a href="#">Repair Steering Wheel.</a></li>
                                 <li><a href="#">Test cruise control.</a></li>
                             </ul>
@@ -1288,4 +1295,9 @@ class Car extends React.Component {
 
 }
 
-export default (Car);
+const mapStateToProps = state => (state.User);
+
+const mapDispatchToProps = dispatch => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Car);

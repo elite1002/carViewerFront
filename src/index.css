@@ -376,6 +376,8 @@ ul {
   display: flex;
   flex-direction: column;
   margin: 0;
+  text-align: left;
+
   height: 150px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -396,7 +398,7 @@ ul {
 
 .list-numbers li .active,
 .list-numbers li a:hover {
-  color: #F76F40;
+  color: #F76F40 !important;
 }
 
 .option-nav {
