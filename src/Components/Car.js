@@ -1246,7 +1246,7 @@ class Car extends React.Component {
                             }
                         }}
                         handleClickArg={{
-                            "id": 3, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
+                            "id": 2, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
                                 let visitedSpot = this.state.visitedSpot;
                                 if (!visitedSpot.some((item) => {
                                     return item === id
@@ -1294,7 +1294,7 @@ class Car extends React.Component {
                             }
                         }}
                         handleClickArg={{
-                            "id": 2, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
+                            "id": 1, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
                                 let visitedSpot = this.state.visitedSpot;
                                 if (!visitedSpot.some((item) => {
                                     return item === id
@@ -1342,7 +1342,7 @@ class Car extends React.Component {
                             }
                         }}
                         handleClickArg={{
-                            "id": 1, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
+                            "id": 0, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
                                 let visitedSpot = this.state.visitedSpot;
                                 if (!visitedSpot.some((item) => {
                                     return item === id
