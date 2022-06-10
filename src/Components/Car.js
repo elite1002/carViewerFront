@@ -1396,7 +1396,7 @@ class Car extends React.Component {
                             }
                         }}
                         handleClickArg={{
-                            "id": 1, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
+                            "id": 0, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
                                 let visitedSpot = this.state.visitedSpot;
                                 if (!visitedSpot.some((item) => {
                                     return item === id
@@ -1419,7 +1419,7 @@ class Car extends React.Component {
                         text=""
                         handleClick={function (evt, args) {
                             console.log(args.visitedSpot);
-                            args.visitedSpot.map((spot) => {
+                            args.visitedSpot.map((spot) => {    
                                 console.log(document.getElementsByClassName('hotspot')[spot].classList.add('purple'))
                             })
                             this.div.getElementsByClassName('hotspot')[0].classList.remove('purple');
@@ -1444,7 +1444,7 @@ class Car extends React.Component {
                             }
                         }}
                         handleClickArg={{
-                            "id": 0, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
+                            "id": 1, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
                                 let visitedSpot = this.state.visitedSpot;
                                 if (!visitedSpot.some((item) => {
                                     return item === id
