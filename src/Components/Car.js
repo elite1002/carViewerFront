@@ -1322,7 +1322,7 @@ class Car extends React.Component {
                         cssClass="thirdr"
                         text="Gear Shifter"
                         handleClick={function (evt, args) {
-                            console.log(args.visitedSpot);
+                            console.log(document.getElementsByClassName('hotspot'));
                             args.visitedSpot.map((spot) => {
                                 document.getElementsByClassName('hotspot')[spot].classList.add('purple')
                             })
@@ -1348,7 +1348,7 @@ class Car extends React.Component {
                             }
                         }}
                         handleClickArg={{
-                            "id": 2, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
+                            "id": 0, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
                                 let visitedSpot = this.state.visitedSpot;
                                 if (!visitedSpot.some((item) => {
                                     return item === id
@@ -1396,7 +1396,7 @@ class Car extends React.Component {
                             }
                         }}
                         handleClickArg={{
-                            "id": 0, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
+                            "id": 1, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
                                 let visitedSpot = this.state.visitedSpot;
                                 if (!visitedSpot.some((item) => {
                                     return item === id
@@ -1444,7 +1444,7 @@ class Car extends React.Component {
                             }
                         }}
                         handleClickArg={{
-                            "id": 1, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
+                            "id": 2, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
                                 let visitedSpot = this.state.visitedSpot;
                                 if (!visitedSpot.some((item) => {
                                     return item === id
