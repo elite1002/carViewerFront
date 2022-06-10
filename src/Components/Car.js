@@ -15,7 +15,21 @@ class Car extends React.Component {
             isShowWheelCad: false,
             dropDownG: false,
             visitedSpot: [],
+            pannellumHfov: 110,
+            gBox: {
+                top: 40,
+                left: 100
+            },
+            rBox: {
+                top: 40,
+                left: 100
+            },
+            sBox: {
+                top: 40,
+                left: 100
+            },
         }
+        this.pannellum = React.createRef();
     }
     componentWillMount() {
         console.log('this.props.isLoggedIn = ', this.props.isLoggedIn);
@@ -627,7 +641,7 @@ class Car extends React.Component {
                         </ul>
                     </div>
                 </div>
-                <div className="main-option" id="s-box">
+                <div className="main-option" id="s-box" style={{ top: this.state.sBox.top, left: this.state.sBox.left }}>
                     <div className="blue-center-box">
 
 
@@ -699,7 +713,10 @@ class Car extends React.Component {
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#" onClick={() => {
+                                    this.pannellum.current.getViewer().setPitch(-20);
+                                    this.pannellum.current.getViewer().setYaw(-213);
+                                }}>
                                     <div className="rightbox-icon">
                                         <img src="https://www.linkpicture.com/q/current.png" alt="" />
                                     </div>
@@ -798,7 +815,7 @@ class Car extends React.Component {
                     </div>
                 </div>
 
-                <div className="main-option" id="r-box">
+                <div className="main-option" id="r-box" style={{ top: this.state.rBox.top, left: this.state.rBox.left }}>
                     <div className="blue-center-box">
                         <div className="rel small-close-btn close-main-option"><a href="#"><i className="fas fa-times"></i>
                         </a>
@@ -864,7 +881,10 @@ class Car extends React.Component {
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#" onClick={() => {
+                                    this.pannellum.current.getViewer().setPitch(-15);
+                                    this.pannellum.current.getViewer().setYaw(-172);
+                                }}>
                                     <div className="rightbox-icon">
                                         <img src="https://www.linkpicture.com/q/current.png" alt="" />
                                     </div>
@@ -963,7 +983,7 @@ class Car extends React.Component {
 
                     </div>
                 </div>
-                <div className="main-option" id="g-box">
+                <div className="main-option" id="g-box" style={{ top: this.state.gBox.top, left: this.state.gBox.left }}>
                     <div className="blue-center-box">
                         <div className="rel small-close-btn close-main-option"><a href="#"><i className="fas fa-times"></i>
                         </a>
@@ -1034,7 +1054,10 @@ class Car extends React.Component {
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#" onClick={() => {
+                                    this.pannellum.current.getViewer().setPitch(-50);
+                                    this.pannellum.current.getViewer().setYaw(-178);
+                                }}>
                                     <div className="rightbox-icon">
                                         <img src="https://www.linkpicture.com/q/current.png" alt="" />
                                     </div>
@@ -1206,10 +1229,39 @@ class Car extends React.Component {
                     image={myImage}
                     pitch={-30}
                     yaw={180}
-                    hfov={110}
+                    hfov={this.state.pannellumHfov}
                     autoLoad
                     onLoad={() => {
                         console.log("panorama loaded");
+                    }}
+                    ref={this.pannellum}
+                    onRender={() => {
+                        // console.log(getViewer());
+                        if (document.getElementsByClassName('hotspot')[0] != undefined)
+                            var spot1Value = document.getElementsByClassName('hotspot')[0].getBoundingClientRect();
+                        if (document.getElementsByClassName('hotspot')[1] != undefined)
+                            var spot2Value = document.getElementsByClassName('hotspot')[1].getBoundingClientRect();
+                        if (document.getElementsByClassName('hotspot')[2] != undefined)
+                            var spot3Value = document.getElementsByClassName('hotspot')[2].getBoundingClientRect();
+                        if (spot1Value != undefined && spot2Value != undefined && spot3Value != undefined)
+                            this.setState({
+                                sBox: {
+                                    top: spot3Value.y,
+                                    left: spot3Value.x + 30
+                                },
+                                gBox: {
+                                    top: spot1Value.y,
+                                    left: spot1Value.x + 30
+                                },
+                                rBox: {
+                                    top: spot2Value.y,
+                                    left: spot2Value.x + 30
+                                },
+                            })
+
+
+
+                        console.log(this.state.gBox, this.state.sBox, this.state.rBox);
                     }}
                 >
                     {/* <Pannellum.Hotspot
@@ -1322,10 +1374,10 @@ class Car extends React.Component {
                         cssClass="thirdr"
                         text="Gear Shifter"
                         handleClick={function (evt, args) {
-                            console.log(document.getElementsByClassName('hotspot'));
                             args.visitedSpot.map((spot) => {
                                 document.getElementsByClassName('hotspot')[spot].classList.add('purple')
                             })
+
                             this.div.getElementsByClassName('hotspot')[0].classList.remove('purple');
                             args.insertPointToVisitedList(args.id);
                             this.div.getElementsByClassName('hotspot')[0].classList.add('green');
@@ -1349,6 +1401,8 @@ class Car extends React.Component {
                         }}
                         handleClickArg={{
                             "id": 0, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
+                                this.pannellum.current.getViewer().setPitch(-50);
+                                this.pannellum.current.getViewer().setYaw(-178);
                                 let visitedSpot = this.state.visitedSpot;
                                 if (!visitedSpot.some((item) => {
                                     return item === id
@@ -1358,7 +1412,8 @@ class Car extends React.Component {
                                 this.setState({
                                     visitedSpot: visitedSpot
                                 })
-                            }
+                            },
+
                         }}
                     />
 
@@ -1397,6 +1452,12 @@ class Car extends React.Component {
                         }}
                         handleClickArg={{
                             "id": 1, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
+                                this.pannellum.current.getViewer().setPitch(-15);
+                                this.pannellum.current.getViewer().setYaw(-172);
+                                // this.setState({
+                                //     pannellumHfov: 10
+                                // })
+
                                 let visitedSpot = this.state.visitedSpot;
                                 if (!visitedSpot.some((item) => {
                                     return item === id
@@ -1419,7 +1480,7 @@ class Car extends React.Component {
                         text=""
                         handleClick={function (evt, args) {
                             console.log(args.visitedSpot);
-                            args.visitedSpot.map((spot) => {    
+                            args.visitedSpot.map((spot) => {
                                 console.log(document.getElementsByClassName('hotspot')[spot].classList.add('purple'))
                             })
                             this.div.getElementsByClassName('hotspot')[0].classList.remove('purple');
@@ -1445,6 +1506,8 @@ class Car extends React.Component {
                         }}
                         handleClickArg={{
                             "id": 2, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
+                                this.pannellum.current.getViewer().setPitch(-20);
+                                this.pannellum.current.getViewer().setYaw(-213);
                                 let visitedSpot = this.state.visitedSpot;
                                 if (!visitedSpot.some((item) => {
                                     return item === id
