@@ -1223,8 +1223,7 @@ class Car extends React.Component {
                             args.visitedSpot.map((spot) => {
                                 document.getElementsByClassName('hotspot')[spot].classList.add('purple')
                             })
-
-                            document.getElementsByClassName('hotspot')[args.id].classList.remove('purple')
+                            this.div.getElementsByClassName('hotspot')[0].classList.remove('purple');
                             args.insertPointToVisitedList(args.id);
                             this.div.getElementsByClassName('hotspot')[0].classList.add('green');
                             $('#g-box').addClass("show-box");
@@ -1272,7 +1271,7 @@ class Car extends React.Component {
                             args.visitedSpot.map((spot) => {
                                 console.log(document.getElementsByClassName('hotspot')[spot].classList.add('purple'))
                             })
-                            document.getElementsByClassName('hotspot')[args.id].classList.remove('purple')
+                            this.div.getElementsByClassName('hotspot')[0].classList.remove('purple');
                             args.insertPointToVisitedList(args.id);
                             this.div.getElementsByClassName('hotspot')[0].classList.add('green');
                             $('#g-box').addClass("show-box");
@@ -1320,7 +1319,7 @@ class Car extends React.Component {
                             args.visitedSpot.map((spot) => {
                                 console.log(document.getElementsByClassName('hotspot')[spot].classList.add('purple'))
                             })
-                            document.getElementsByClassName('hotspot')[args.id].classList.remove('purple')
+                            this.div.getElementsByClassName('hotspot')[0].classList.remove('purple');
                             args.insertPointToVisitedList(args.id);
                             this.div.getElementsByClassName('hotspot')[0].classList.add('green');
                             $('#g-box').addClass("show-box");
