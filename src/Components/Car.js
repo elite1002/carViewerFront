@@ -1141,7 +1141,7 @@ class Car extends React.Component {
                     <h1>Do you want this video to open on a small screen or a new browser tab</h1>
                     <div className="butns-links-popup">
                         <a href="#" className="close-btn"><i className="fas fa-times"></i></a>
-                        <a href="#" id="small-screenS" className="vPlay" style={{marginRight: 5+'px'}}>Open Small Screen</a>
+                        <a href="#" id="small-screenS" className="vPlay margin-right-5" >Open Small Screen</a>
                         <a id="newTapS"
                             href="https://www.youtube.com/embed/XKfgdkcIUxw?title=0&portrait=0&byline=0&autoplay=1&loop=1&transparent=1"
                             target="_blank">Open New tab</a>
@@ -1151,7 +1151,7 @@ class Car extends React.Component {
                     <h1>Do you want this video to open on a small screen or a new browser tab</h1>
                     <div className="butns-links-popup">
                         <a href="#" className="close-btn"><i className="fas fa-times"></i></a>
-                        <a href="#" id="small-screenG" className="vPlay">Open Small Screen</a>
+                        <a href="#" id="small-screenG" className="vPlay margin-right-5">Open Small Screen</a>
                         <a id="newTapG"
                             href="https://www.youtube.com/embed/SQIbeAk-bFA?title=0&portrait=0&byline=0&autoplay=1&loop=1&transparent=1"
                             target="_blank">Open New tab</a>
@@ -1161,7 +1161,7 @@ class Car extends React.Component {
                     <h1>Do you want this video to open on a small screen or a new browser tab</h1>
                     <div className="butns-links-popup">
                         <a href="#" className="close-btn"><i className="fas fa-times"></i></a>
-                        <a href="#" id="small-screenR" className="vPlay">Open Small Screen</a>
+                        <a href="#" id="small-screenR" className="vPlay margin-right-5">Open Small Screen</a>
                         <a id="newTapR"
                             href="https://www.youtube.com/embed/zJFwOC_Bv4Y?title=0&portrait=0&byline=0&autoplay=1&loop=1&transparent=1"
                             target="_blank">Open New tab</a>
