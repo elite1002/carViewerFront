@@ -105,11 +105,15 @@ ul {
 .hotspot-nav li .active {
   background: #00b908;
 }
-
+.green{
+  background: #00b908 !important;
+}
 .hotspot-nav li .purple {
   background: purple;
 }
-
+.purple {
+  background: purple !important;
+}
 .hotspot-nav li .vistor {
   background: #b73eff;
 }
