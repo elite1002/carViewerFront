@@ -28,6 +28,11 @@ class Car extends React.Component {
                 top: 40,
                 left: 100
             },
+            currentBox: {
+                top: 40,
+                left: 100
+            },
+            currentSpot: undefined,
         }
         this.pannellum = React.createRef();
     }
@@ -627,7 +632,7 @@ class Car extends React.Component {
                         <a href="#" className="thirdr"></a>
                     </li> */}
                 </ul>
-                <div className="interior-box" id="inBox">
+                <div className="interior-box" id="inBox" style={{top: this.state.currentBox.top, left: this.state.currentBox.left}}>
                     <div className="pop-up-box">
                     </div>
                     <div className="box-blue">
@@ -1243,7 +1248,10 @@ class Car extends React.Component {
                             var spot2Value = document.getElementsByClassName('hotspot')[1].getBoundingClientRect();
                         if (document.getElementsByClassName('hotspot')[2] != undefined)
                             var spot3Value = document.getElementsByClassName('hotspot')[2].getBoundingClientRect();
-                        if (spot1Value != undefined && spot2Value != undefined && spot3Value != undefined)
+                        if(this.state.currentSpot != undefined) {
+                            var currentSpot = this.state.currentSpot.getBoundingClientRect();
+                        }
+                        if (spot1Value != undefined && spot2Value != undefined && spot3Value != undefined && currentSpot != undefined)
                             this.setState({
                                 sBox: {
                                     top: spot3Value.y,
@@ -1257,6 +1265,10 @@ class Car extends React.Component {
                                     top: spot2Value.y,
                                     left: spot2Value.x + 30
                                 },
+                                currentBox: {
+                                    top: currentSpot.y,
+                                    left: currentSpot.x - 210 
+                                }
                             })
 
 
@@ -1264,109 +1276,7 @@ class Car extends React.Component {
                         console.log(this.state.gBox, this.state.sBox, this.state.rBox);
                     }}
                 >
-                    {/* <Pannellum.Hotspot
-                        type="custom"
-                        pitch={-50}
-                        yaw={-178}
-                        cssClass="thirdr"
-                        text="Gear Shifter"
-                        handleClick={function (evt, args) {
-                            console.log(args.visitedSpot);
-                            
-                            args.insertPointToVisitedList(2);
-                            console.log(document.getElementsByClassName('hotspot')[2].parentElement)
-                            this.div.getElementsByClassName('hotspot')[0].classList.add('green');
-                            $('#g-box').addClass("show-box");
-                            $('#g-box').removeClass("hide-box");
-                            $('#r-box').removeClass("show-box");
-                            $('#s-box').removeClass("show-box");
-                            $('.firstr').removeClass("active");
-                            $('.secondr').removeClass("active");
-                            $('.thirdr').removeClass("purple");
-                            $('.thirdr').addClass("active");
-                            $('#inspection3').val('1');
-                            var first = $('#inspection1').val();
-                            var second = $('#inspection2').val();
-                            if (first == 1) {
-                                $('.secondr').addClass("purple");
-                            }
-                            if (second == 1) {
-                                $('.firstr').addClass("purple");
-                            }
-                        }}
-                        handleClickArg={{
-                            "id": 3, "visitedSpot": this.state.visitedSpot, insertPointToVisitedList: (id) => {
-                                let visitedSpot = this.state.visitedSpot;
-                                if(!visitedSpot.some((item) => {
-                                    return item === id
-                                })) {
-                                    visitedSpot.push(id);
-                                } 
-                                this.setState({
-                                    visitedSpot: visitedSpot
-                                })
-                            }
-                        }}
-                    />
-
-                    <Pannellum.Hotspot
-                        type="custom"
-                        pitch={-15}
-                        cssClass="secondr"
-                        yaw={-172}
-                        text="Info Hotspot Text 3"
-                        URL="https://github.com/farminf/pannellum-react"
-                        handleClick={() => {
-                            console.log('second');
-                            $('#r-box').addClass("show-box");
-                            $('#r-box').removeClass("hide-box");
-                            $('#s-box').removeClass("show-box");
-                            $('#g-box').removeClass("show-box");
-                            $('.firstr').removeClass("active");
-                            $('.secondr').removeClass("purple");
-                            $('.secondr').addClass("active");
-                            $('.secondr').removeClass("active");
-                            $('#inspection2').val('1');
-                            var first = $('#inspection1').val();
-                            var third = $('#inspection3').val();
-                            if (third == 1) {
-                                $('.thirdr').addClass("purple");
-                            }
-                            if (first == 1) {
-                                $('.firstr').addClass("purple");
-                            }
-                        }}
-                        handleClickArg={{ "id": 2 }}
-
-                    />
-                    <Pannellum.Hotspot
-                        type="custom"
-                        pitch={-20}
-                        cssClass="firstr"
-                        yaw={-213}
-                        text=""
-                        handleClick={() => {
-                            $('#s-box').addClass("show-box");
-                            $('#s-box').removeClass("hide-box");
-                            $('#g-box').removeClass("show-box");
-                            $('#r-box').removeClass("show-box");
-                            $('.firstr').addClass("active");
-                            $('.firstr').removeClass("purple");
-                            $('.secondr').removeClass("active");
-                            $('.thirdr').removeClass("active");
-                            $('#inspection1').val('1');
-                            var second = $('#inspection2').val();
-                            var third = $('#inspection3').val();
-                            if (third == 1) {
-                                $('.thirdr').addClass("purple");
-                            }
-                            if (second == 1) {
-                                $('.secondr').addClass("purple");
-                            }
-                        }}
-                        URL="https://github.com/farminf/pannellum-react"
-                        handleClickArg={{ "id": 1 }}
-                    /> */}
+                    
                     <Pannellum.Hotspot
                         type="custom"
                         pitch={-50}
@@ -1377,7 +1287,9 @@ class Car extends React.Component {
                             args.visitedSpot.map((spot) => {
                                 document.getElementsByClassName('hotspot')[spot].classList.add('purple')
                             })
-
+                            args.parentNode.setState({
+                                currentSpot: this.div.getElementsByClassName('hotspot')[0]
+                            })
                             this.div.getElementsByClassName('hotspot')[0].classList.remove('purple');
                             args.insertPointToVisitedList(args.id);
                             this.div.getElementsByClassName('hotspot')[0].classList.add('green');
@@ -1413,6 +1325,7 @@ class Car extends React.Component {
                                     visitedSpot: visitedSpot
                                 })
                             },
+                            parentNode: this,
 
                         }}
                     />
@@ -1428,6 +1341,9 @@ class Car extends React.Component {
                             console.log(args.visitedSpot);
                             args.visitedSpot.map((spot) => {
                                 console.log(document.getElementsByClassName('hotspot')[spot].classList.add('purple'))
+                            })
+                            args.parentNode.setState({
+                                currentSpot: this.div.getElementsByClassName('hotspot')[0]
                             })
                             this.div.getElementsByClassName('hotspot')[0].classList.remove('purple');
                             args.insertPointToVisitedList(args.id);
@@ -1467,7 +1383,9 @@ class Car extends React.Component {
                                 this.setState({
                                     visitedSpot: visitedSpot
                                 })
-                            }
+                            },
+                            parentNode: this,
+
                         }}
 
 
@@ -1482,6 +1400,9 @@ class Car extends React.Component {
                             console.log(args.visitedSpot);
                             args.visitedSpot.map((spot) => {
                                 console.log(document.getElementsByClassName('hotspot')[spot].classList.add('purple'))
+                            })
+                            args.parentNode.setState({
+                                currentSpot: this.div.getElementsByClassName('hotspot')[0]
                             })
                             this.div.getElementsByClassName('hotspot')[0].classList.remove('purple');
                             args.insertPointToVisitedList(args.id);
@@ -1517,7 +1438,8 @@ class Car extends React.Component {
                                 this.setState({
                                     visitedSpot: visitedSpot
                                 })
-                            }
+                            },
+                            parentNode: this,
                         }}
 
                     />
